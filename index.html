@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Elegancia - Tu Tienda de Peluquería Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="overflow-x-hidden bg-slate-50 text-slate-900">
+    <header class="hair-gradient text-white p-4 sticky top-0 z-50 shadow-lg border-b border-amber-900/30">
+        <div class="container mx-auto flex flex-wrap items-center justify-between gap-4">
+            <h1 class="brand-font text-3xl gold-accent cursor-pointer" onclick="window.scrollTo(0,0)">La Elegancia</h1>
+            <nav class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
+                <a href="#inicio" class="hover:text-amber-500 transition">Inicio</a>
+                <a href="#ofertas" class="hover:text-amber-500 transition">Ofertas</a>
+                <a href="#tienda" class="hover:text-amber-500 transition">Tienda</a>
+                <a href="#portafolio" class="hover:text-amber-500 transition">Portafolio</a>
+            </nav>
+            <div class="flex items-center gap-6">
+                <div id="user-profile" class="flex items-center gap-3 border-r border-gray-700 pr-6">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-xs text-gray-400">Bienvenido/a</p>
+                        <p class="text-sm font-semibold" id="user-display">Invitado</p>
+                    </div>
+                    <button class="w-10 h-10 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center hover:bg-gray-700 transition" title="Usuario">
+                        <i class="fas fa-user text-gray-400"></i>
+                    </button>
+                </div>
+                <button id="cart-toggle" class="relative p-2 hover:text-amber-500 transition-colors" aria-label="Abrir carrito">
+                    <i class="fas fa-shopping-basket text-2xl text-amber-500"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-amber-900">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="inicio" class="relative h-screen flex items-center justify-center text-center px-4 overflow-hidden">
+        <div class="z-20 container mx-auto">
+            <span class="text-amber-500 uppercase tracking-[0.3em] font-bold text-sm mb-4 block">Estilo & Profesionalismo</span>
+            <h2 class="text-white text-5xl md:text-8xl brand-font mb-6 drop-shadow-2xl">Luce un cabello <br><span class="gold-accent italic">Extraordinario</span></h2>
+            <p class="text-gray-300 max-w-2xl mx-auto text-lg md:text-xl mb-10 leading-relaxed font-light">
+                Únete a nuestra comunidad y obtén un <span class="text-white font-bold">10% de descuento</span> en tu primera compra de herramientas profesionales.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#tienda" class="bg-gold text-black px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)]">Explorar Tienda</a>
+                <a href="#ofertas" class="backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">Ver Ofertas</a>
+            </div>
+        </div>
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 hero-overlay z-10"></div>
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" alt="Fondo Peluquería" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-amber-500 text-2xl z-20">
+            <i class="fas fa-mouse"></i>
+        </div>
+    </section>
+
+    <section id="ofertas" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center text-center mb-16">
+                <h3 class="brand-font text-4xl md:text-5xl mb-4 italic">Ofertas de Bienvenida</h3>
+                <p class="text-gray-500 max-w-lg">Seleccionamos nuestros productos más vendidos con precios especiales para que comiences tu experiencia con nosotros.</p>
+                <div class="w-16 h-1 bg-gold mt-6"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="group relative flex flex-col md:flex-row items-center bg-white rounded-[2rem] overflow-hidden shadow-2xl shadow-gray-200/50 border border-gray-100 transition-all hover:border-amber-200">
+                    <div class="w-full md:w-1/2 h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kit Profesional" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-10 md:w-1/2">
+                        <span class="offer-badge mb-4 inline-block">EXCLUSIVO WEB</span>
+                        <h4 class="text-2xl font-bold mb-2 brand-font">Kit Master Titanium</h4>
+                        <p class="text-gray-500 text-sm mb-6">El set preferido por los estilistas de alfombra roja. Durabilidad y brillo garantizado.</p>
+                        <div class="mb-8">
+                            <p class="text-gray-400 line-through text-sm">$500,000</p>
+                            <p class="text-3xl font-bold text-gray-900">$350,000</p>
+                        </div>
+                        <button onclick="agregarProductoPorId(4)" class="w-full bg-black text-white py-4 rounded-xl font-bold hover:bg-gold hover:text-black transition-all">Añadir al Carrito</button>
+                    </div>
+                </div>
+                <div class="group relative flex flex-col md:flex-row items-center bg-white rounded-[2rem] overflow-hidden shadow-2xl shadow-gray-200/50 border border-gray-100 transition-all hover:border-amber-200">
+                    <div class="w-full md:w-1/2 h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1527799822344-429dfa04fbd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tratamiento Argán" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-10 md:w-1/2">
+                        <span class="offer-badge mb-4 inline-block bg-amber-600">MÁS VENDIDO</span>
+                        <h4 class="text-2xl font-bold mb-2 brand-font">Tratamiento de Oro</h4>
+                        <p class="text-gray-500 text-sm mb-6">Aceite de argán puro extraído en frío para una nutrición profunda y sin frizz.</p>
+                        <div class="mb-8">
+                            <p class="text-gray-400 line-through text-sm">$65,000</p>
+                            <p class="text-3xl font-bold text-gray-900">$45,000</p>
+                        </div>
+                        <button onclick="agregarProductoPorId(5)" class="w-full bg-black text-white py-4 rounded-xl font-bold hover:bg-gold hover:text-black transition-all">Añadir al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tienda" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
+                <div class="text-center md:text-left">
+                    <h3 class="brand-font text-4xl mb-2">Nuestro Inventario</h3>
+                    <p class="text-gray-500 italic">Filtrar por tu necesidad capilar</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-3 p-2 bg-white rounded-2xl shadow-sm border border-gray-100" id="category-filters">
+                    <button class="px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest bg-black text-white transition shadow-lg" data-category="all">Todos</button>
+                    <button class="px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-gray-100 transition text-gray-500" data-category="Herramientas">Herramientas</button>
+                    <button class="px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-gray-100 transition text-gray-500" data-category="Cuidado">Cuidado</button>
+                    <button class="px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-gray-100 transition text-gray-500" data-category="Tratamientos">Tratamientos</button>
+                </div>
+            </div>
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
+        </div>
+    </section>
+
+    <section id="portafolio" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h3 class="brand-font text-4xl mb-4">Inspiración & Resultados</h3>
+                <p class="text-gray-500">Lo que puedes lograr con nuestras herramientas y asesoría.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="group relative h-80 rounded-3xl overflow-hidden cursor-pointer shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Corte" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-bold border-b-2 border-amber-500 pb-1 italic">Vanguardia</span>
+                    </div>
+                </div>
+                <div class="group relative h-80 rounded-3xl overflow-hidden cursor-pointer shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Peinado" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-bold border-b-2 border-amber-500 pb-1 italic">Estilo Clásico</span>
+                    </div>
+                </div>
+                <div class="group relative h-80 rounded-3xl overflow-hidden cursor-pointer shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f8c2b1b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Color" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-bold border-b-2 border-amber-500 pb-1 italic">Colorimetría</span>
+                    </div>
+                </div>
+                <div class="group relative h-80 rounded-3xl overflow-hidden cursor-pointer shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Spa" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-bold border-b-2 border-amber-500 pb-1 italic">Brillo Infinito</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="hair-gradient text-white pt-20 pb-10">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-800 pb-20">
+            <div class="col-span-1 md:col-span-1">
+                <h4 class="brand-font text-3xl gold-accent mb-6 italic">La Elegancia</h4>
+                <p class="text-gray-400 leading-relaxed text-sm">Expertos en belleza capilar desde 1995. Solo distribuimos marcas que nosotros mismos usaríamos en el salón.</p>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6 text-xs uppercase tracking-widest text-amber-500">Explorar</h5>
+                <ul class="text-gray-400 space-y-4 text-sm">
+                    <li><a href="#inicio" class="hover:text-white transition">Inicio</a></li>
+                    <li><a href="#tienda" class="hover:text-white transition">Nueva Colección</a></li>
+                    <li><a href="#ofertas" class="hover:text-white transition">Outlet Semanal</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6 text-xs uppercase tracking-widest text-amber-500">Legal</h5>
+                <ul class="text-gray-400 space-y-4 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Términos de Uso</a></li>
+                    <li><a href="#" class="hover:text-white transition">Política de Envíos</a></li>
+                    <li><a href="#" class="hover:text-white transition">Devoluciones</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6 text-xs uppercase tracking-widest text-amber-500">Redes Sociales</h5>
+                <div class="flex gap-6 text-xl">
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 text-center mt-10 text-gray-600 text-xs tracking-widest uppercase">
+            &copy; 2026 La Elegancia. Diseñado para la excelencia.
+        </div>
+    </footer>
+
+    <div id="sidebar-cart" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-[60] cart-hidden flex flex-col">
+        <div class="p-8 hair-gradient text-white flex justify-between items-center shadow-lg">
+            <div>
+                <h3 class="brand-font text-2xl gold-accent italic">Bolsa de Compra</h3>
+                <p class="text-[10px] uppercase tracking-widest text-gray-400">Items seleccionados</p>
+            </div>
+            <button id="close-cart" class="w-12 h-12 flex items-center justify-center hover:bg-white/10 rounded-full transition" aria-label="Cerrar carrito">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-6 bg-gray-50">
+            <div class="flex flex-col items-center justify-center h-full text-center">
+                <i class="fas fa-shopping-bag text-5xl text-gray-200 mb-4"></i>
+                <p class="text-gray-400 font-light italic">Tu bolsa está esperando ser llenada...</p>
+                <a href="#tienda" onclick="document.getElementById('sidebar-cart').classList.add('cart-hidden')" class="mt-6 text-amber-600 font-bold border-b border-amber-600 pb-1 text-sm">Ir a la tienda</a>
+            </div>
+        </div>
+        <div class="p-8 border-t bg-white">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-gray-500 uppercase tracking-widest text-xs font-bold">Subtotal Estimado</span>
+                <span id="cart-total" class="text-2xl font-bold">$0</span>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+                <button id="checkout-button" class="w-full bg-black text-white py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-amber-600 transition-all shadow-xl">Finalizar Compra</button>
+                <button id="clear-cart" class="text-gray-400 text-xs uppercase tracking-widest font-bold hover:text-red-500 py-2">Vaciar Todo</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+}
+
+.brand-font {
+    font-family: 'Playfair Display', serif;
+}
+
+.hair-gradient {
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+}
+
+.gold-accent {
+    color: #d4af37;
+}
+
+.bg-gold {
+    background-color: #d4af37;
+}
+
+.product-card {
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+#sidebar-cart {
+    transition: transform 0.3s ease-in-out;
+}
+
+.cart-hidden {
+    transform: translateX(100%);
+}
+
+.offer-badge {
+    background: #e63946;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.35s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+button:focus {
+    outline: none;
+}
+
