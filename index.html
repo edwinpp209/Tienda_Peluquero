@@ -15,8 +15,9 @@
             <nav class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
                 <a href="#inicio" class="hover:text-amber-500 transition">Inicio</a>
                 <a href="#ofertas" class="hover:text-amber-500 transition">Ofertas</a>
-                <a href="#tienda" class="hover:text-amber-500 transition">Tienda</a>
+                <a href="productos.html" class="hover:text-amber-500 transition">Tienda</a>
                 <a href="#portafolio" class="hover:text-amber-500 transition">Portafolio</a>
+                <a href="login.html" class="hover:text-amber-500 transition">Entrar</a>
             </nav>
             <div class="flex items-center gap-6">
                 <div id="user-profile" class="flex items-center gap-3 border-r border-gray-700 pr-6">
@@ -24,9 +25,9 @@
                         <p class="text-xs text-gray-400">Bienvenido/a</p>
                         <p class="text-sm font-semibold" id="user-display">Invitado</p>
                     </div>
-                    <button class="w-10 h-10 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center hover:bg-gray-700 transition" title="Usuario">
+                    <a href="login.html" class="w-10 h-10 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center hover:bg-gray-700 transition" title="Ingresar">
                         <i class="fas fa-user text-gray-400"></i>
-                    </button>
+                    </a>
                 </div>
                 <button id="cart-toggle" class="relative p-2 hover:text-amber-500 transition-colors" aria-label="Abrir carrito">
                     <i class="fas fa-shopping-basket text-2xl text-amber-500"></i>
@@ -44,8 +45,8 @@
                 Únete a nuestra comunidad y obtén un <span class="text-white font-bold">10% de descuento</span> en tu primera compra de herramientas profesionales.
             </p>
             <div class="flex flex-wrap justify-center gap-6">
-                <a href="#tienda" class="bg-gold text-black px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)]">Explorar Tienda</a>
-                <a href="#ofertas" class="backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">Ver Ofertas</a>
+                <a href="productos.html" class="bg-gold text-black px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)]">Explorar Tienda</a>
+                <a href="login.html" class="backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">Inicia Sesión</a>
             </div>
         </div>
         <div class="absolute inset-0 z-0">
@@ -217,6 +218,8 @@
         </div>
     </div>
 
+    <script src="js/productsData.js"></script>
+    <script src="js/cart.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,41 +1,37 @@
 // Lógica POO para La Elegancia
 
-class Producto {
-    constructor(id, nombre, precio, categoria, icono) {
-        this.id = id;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.categoria = categoria;
-        this.icono = icono;
-    }
-}
-
 class Carrito {
     constructor() {
-        this.items = [];
+        this.items = obtenerCarrito();
+        this.actualizarUI();
     }
 
     agregarProducto(producto) {
-        this.items.push(producto);
+        const item = this.items.find(elemento => elemento.id === producto.id);
+        if (item) {
+            item.cantidad += 1;
+        } else {
+            this.items.push({ ...producto, cantidad: 1 });
+        }
+        guardarCarrito(this.items);
         this.actualizarUI();
         this.abrirCarrito();
     }
 
     eliminarProducto(id) {
-        const index = this.items.findIndex(item => item.id === id);
-        if (index !== -1) {
-            this.items.splice(index, 1);
-        }
+        this.items = this.items.filter(item => item.id !== id);
+        guardarCarrito(this.items);
         this.actualizarUI();
     }
 
     vaciarCarrito() {
         this.items = [];
+        vaciarCarrito();
         this.actualizarUI();
     }
 
     calcularTotal() {
-        return this.items.reduce((total, item) => total + item.precio, 0);
+        return calcularTotal(this.items);
     }
 
     abrirCarrito() {
@@ -47,8 +43,16 @@ class Carrito {
         const cartCount = document.getElementById('cart-count');
         const cartTotal = document.getElementById('cart-total');
 
-        cartCount.textContent = this.items.length;
-        cartTotal.textContent = `$${this.calcularTotal().toLocaleString()}`;
+        if (cartCount) {
+            cartCount.textContent = this.items.reduce((sum, item) => sum + item.cantidad, 0);
+        }
+        if (cartTotal) {
+            cartTotal.textContent = `$${this.calcularTotal().toLocaleString('es-AR')}`;
+        }
+
+        actualizarContadoresGlobales();
+
+        if (!cartItems) return;
 
         if (this.items.length === 0) {
             cartItems.innerHTML = `
@@ -68,7 +72,7 @@ class Carrito {
                 </div>
                 <div class="flex-grow">
                     <h4 class="font-bold text-gray-800 text-sm">${item.nombre}</h4>
-                    <p class="text-amber-600 font-bold">$${item.precio.toLocaleString()}</p>
+                    <p class="text-amber-600 font-bold">$${item.precio.toLocaleString('es-AR')}</p>
                 </div>
                 <button onclick="carrito.eliminarProducto(${item.id})" class="w-8 h-8 text-gray-300 hover:text-red-500 transition" aria-label="Eliminar producto">
                     <i class="fas fa-trash-alt"></i>
@@ -80,18 +84,7 @@ class Carrito {
 
 class Tienda {
     constructor() {
-        this.catalogo = [
-            new Producto(1, 'Tijeras de Precisión Gold', 120000, 'Herramientas', '✂️'),
-            new Producto(2, 'Secador Iónico 3000W', 250000, 'Herramientas', '💨'),
-            new Producto(3, 'Champú Restauración', 45000, 'Cuidado', '🧴'),
-            new Producto(4, 'Plancha Titanium Master', 350000, 'Herramientas', '💇‍♀️'),
-            new Producto(5, 'Tratamiento Argán Oro', 45000, 'Tratamientos', '✨'),
-            new Producto(6, 'Tinte Profesional Silk', 25000, 'Tratamientos', '🎨'),
-            new Producto(7, 'Cepillo Térmico Pro', 45000, 'Herramientas', '🪮'),
-            new Producto(8, 'Spray Fijación Premium', 18000, 'Cuidado', '🧪'),
-            new Producto(9, 'Mascarilla de Coco', 32000, 'Cuidado', '🥥'),
-            new Producto(10, 'Capa Profesional Black', 55000, 'Herramientas', '👘')
-        ];
+        this.catalogo = PRODUCTOS;
     }
 
     cargarCatalogo(filtro = 'all') {
@@ -106,7 +99,7 @@ class Tienda {
                 <div class="p-8 flex-grow">
                     <span class="text-[10px] font-black text-amber-600 uppercase tracking-[0.2em]">${producto.categoria}</span>
                     <h3 class="text-xl font-bold text-gray-800 mt-2 brand-font">${producto.nombre}</h3>
-                    <p class="text-2xl font-bold text-gray-900 mt-4">$${producto.precio.toLocaleString()}</p>
+                    <p class="text-2xl font-bold text-gray-900 mt-4">$${producto.precio.toLocaleString('es-AR')}</p>
                 </div>
                 <div class="p-6 pt-0">
                     <button onclick="agregarProductoPorId(${producto.id})" class="w-full bg-black text-white py-4 rounded-2xl font-bold hover:bg-amber-600 hover:text-black transition-all flex items-center justify-center gap-3 shadow-lg">
@@ -144,7 +137,7 @@ window.addEventListener('DOMContentLoaded', () => {
             alert('Tu carrito está vacío. Agrega productos para finalizar la compra.');
             return;
         }
-        alert(`Compra finalizada. Total: $${carrito.calcularTotal().toLocaleString()}`);
+        alert(`Compra finalizada. Total: $${carrito.calcularTotal().toLocaleString('es-AR')}`);
         carrito.vaciarCarrito();
         cerrarCarrito();
     });

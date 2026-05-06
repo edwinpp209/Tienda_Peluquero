@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | La Elegancia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="overflow-x-hidden bg-slate-50 text-slate-900">
+    <header class="hair-gradient text-white p-4 sticky top-0 z-50 shadow-lg border-b border-amber-900/30">
+        <div class="container mx-auto flex flex-wrap items-center justify-between gap-4">
+            <a href="index.html" class="brand-font text-3xl gold-accent">La Elegancia</a>
+            <nav class="hidden md:flex gap-6 text-xs uppercase tracking-[0.25em] text-gray-200">
+                <a href="index.html" class="hover:text-amber-500">Inicio</a>
+                <a href="login.html" class="hover:text-amber-500">Iniciar sesión</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <span class="text-sm uppercase tracking-[0.2em] text-gray-200">Cliente</span>
+                <button id="cart-toggle" class="relative p-2 hover:text-amber-500 transition-colors" aria-label="Abrir carrito">
+                    <i class="fas fa-shopping-basket text-2xl text-amber-500"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-amber-900">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-20">
+        <section class="mb-16">
+            <div class="grid gap-10 lg:grid-cols-[1fr_0.6fr] items-start">
+                <div>
+                    <h1 class="brand-font text-5xl text-gray-900 mb-5">Productos por Categoría</h1>
+                    <p class="text-gray-600 leading-relaxed max-w-2xl">Explora nuestro catálogo filtrado por categorías y agrega tus favoritos al carrito. El carrito se mantiene visible mientras navegas.</p>
+                </div>
+                <div class="rounded-[2rem] bg-amber-50 p-8 shadow-lg border border-amber-200">
+                    <h2 class="text-2xl font-bold mb-4">Tu carrito</h2>
+                    <div id="cart-sidebar" class="space-y-4"></div>
+                    <div class="mt-6 border-t border-gray-200 pt-4">
+                        <p class="text-gray-500 uppercase tracking-[0.2em] text-xs">Total</p>
+                        <p id="cart-total" class="text-4xl font-bold mt-2">$0</p>
+                        <button id="clear-cart" class="mt-6 w-full rounded-3xl bg-black py-4 text-white uppercase tracking-[0.2em] hover:bg-amber-600 transition">Vaciar Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rounded-[2rem] bg-white p-8 shadow-2xl border border-gray-100">
+            <div class="mb-8 flex flex-wrap gap-4">
+                <button data-category="all" class="filter-btn bg-black text-white">Todos</button>
+                <button data-category="Herramientas" class="filter-btn">Herramientas</button>
+                <button data-category="Cuidado" class="filter-btn">Cuidado</button>
+                <button data-category="Tratamientos" class="filter-btn">Tratamientos</button>
+            </div>
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </section>
+    </main>
+
+    <script src="js/productsData.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/productos.js"></script>
+</body>
+</html>
