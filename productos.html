@@ -14,10 +14,8 @@
             <a href="index.html" class="brand-font text-3xl gold-accent">La Elegancia</a>
             <nav class="hidden md:flex gap-6 text-xs uppercase tracking-[0.25em] text-gray-200">
                 <a href="index.html" class="hover:text-amber-500">Inicio</a>
-                <a href="login.html" class="hover:text-amber-500">Iniciar sesión</a>
             </nav>
             <div class="flex items-center gap-4">
-                <span class="text-sm uppercase tracking-[0.2em] text-gray-200">Cliente</span>
                 <button id="cart-toggle" class="relative p-2 hover:text-amber-500 transition-colors" aria-label="Abrir carrito">
                     <i class="fas fa-shopping-basket text-2xl text-amber-500"></i>
                     <span id="cart-count" class="absolute -top-1 -right-1 bg-white text-black text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-amber-900">0</span>
@@ -28,33 +26,51 @@
 
     <main class="container mx-auto px-4 py-20">
         <section class="mb-16">
-            <div class="grid gap-10 lg:grid-cols-[1fr_0.6fr] items-start">
-                <div>
-                    <h1 class="brand-font text-5xl text-gray-900 mb-5">Productos por Categoría</h1>
-                    <p class="text-gray-600 leading-relaxed max-w-2xl">Explora nuestro catálogo filtrado por categorías y agrega tus favoritos al carrito. El carrito se mantiene visible mientras navegas.</p>
-                </div>
-                <div class="rounded-[2rem] bg-amber-50 p-8 shadow-lg border border-amber-200">
-                    <h2 class="text-2xl font-bold mb-4">Tu carrito</h2>
-                    <div id="cart-sidebar" class="space-y-4"></div>
-                    <div class="mt-6 border-t border-gray-200 pt-4">
-                        <p class="text-gray-500 uppercase tracking-[0.2em] text-xs">Total</p>
-                        <p id="cart-total" class="text-4xl font-bold mt-2">$0</p>
-                        <button id="clear-cart" class="mt-6 w-full rounded-3xl bg-black py-4 text-white uppercase tracking-[0.2em] hover:bg-amber-600 transition">Vaciar Carrito</button>
-                    </div>
-                </div>
+            <div>
+                <h1 class="brand-font text-5xl text-gray-900 mb-5">Productos por Categoría</h1>
+                <p class="text-gray-600 leading-relaxed max-w-2xl">Explora nuestro catálogo filtrado por categorías y agrega tus favoritos al carrito. Abre tu carrito con el icono en la esquina superior derecha.</p>
             </div>
         </section>
 
         <section class="rounded-[2rem] bg-white p-8 shadow-2xl border border-gray-100">
-            <div class="mb-8 flex flex-wrap gap-4">
-                <button data-category="all" class="filter-btn bg-black text-white">Todos</button>
-                <button data-category="Herramientas" class="filter-btn">Herramientas</button>
-                <button data-category="Cuidado" class="filter-btn">Cuidado</button>
-                <button data-category="Tratamientos" class="filter-btn">Tratamientos</button>
+            <div class="mb-8 flex flex-wrap gap-4" id="category-filters">
+                <button data-category="all" class="filter-btn px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest bg-black text-white transition shadow-lg">Todos</button>
+                <button data-category="Herramientas" class="filter-btn px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-gray-100 transition text-gray-500">Herramientas</button>
+                <button data-category="Cuidado" class="filter-btn px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-gray-100 transition text-gray-500">Cuidado</button>
+                <button data-category="Tratamientos" class="filter-btn px-8 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-gray-100 transition text-gray-500">Tratamientos</button>
             </div>
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
         </section>
     </main>
+
+    <div id="sidebar-cart" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-[60] cart-hidden flex flex-col">
+        <div class="p-8 hair-gradient text-white flex justify-between items-center shadow-lg">
+            <div>
+                <h3 class="brand-font text-2xl gold-accent italic">Bolsa de Compra</h3>
+                <p class="text-[10px] uppercase tracking-widest text-gray-400">Items seleccionados</p>
+            </div>
+            <button id="close-cart" class="w-12 h-12 flex items-center justify-center hover:bg-white/10 rounded-full transition" aria-label="Cerrar carrito">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-6 bg-gray-50">
+            <div class="flex flex-col items-center justify-center h-full text-center">
+                <i class="fas fa-shopping-bag text-5xl text-gray-200 mb-4"></i>
+                <p class="text-gray-400 font-light italic">Tu bolsa está esperando ser llenada...</p>
+                <a href="#product-grid" onclick="document.getElementById('sidebar-cart').classList.add('cart-hidden')" class="mt-6 text-amber-600 font-bold border-b border-amber-600 pb-1 text-sm">Ir a la tienda</a>
+            </div>
+        </div>
+        <div class="p-8 border-t bg-white">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-gray-500 uppercase tracking-widest text-xs font-bold">Subtotal Estimado</span>
+                <span id="cart-total" class="text-2xl font-bold">$0</span>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+                <button id="checkout-button" class="w-full bg-black text-white py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-amber-600 transition-all shadow-xl">Finalizar Compra</button>
+                <button id="clear-cart" class="text-gray-400 text-xs uppercase tracking-widest font-bold hover:text-red-500 py-2">Vaciar Todo</button>
+            </div>
+        </div>
+    </div>
 
     <script src="js/productsData.js"></script>
     <script src="js/cart.js"></script>
